@@ -1,0 +1,46 @@
+model:
+  model_path: Qwen2.5-VL-3B-Instruct
+  attn_implementation: 'flash_attention_2'
+  max_pixels: 3211264
+
+data:
+  train_path: config/dataconfig/parquet/llavaov800k_3dod800k.yaml
+  chat_template: qwen2_5vl
+  max_seq_len: 16384
+  fps: 2
+  train_size: 1_650_000_000  # 1B tokens for packing
+  dataset_length: 1800000  # 1.4 M, set less 1.4M
+  dataloader_type: "native"
+  datasets_type: "iterable"
+  data_name: "llava_sft_preprocess"
+  num_workers: 8
+  pin_memory: false
+
+train:
+  enable_fov: true
+  fov_no_resize: false
+  output_dir: work_dirs/spatial/20250529_qwen2_5vl_sft_fov_llavaov800k_3dod800k
+  enable_gradient_checkpointing: true
+  enable_mixed_precision: true
+  data_parallel_mode: fsdp1
+  enable_full_shard: true
+  # enable_fsdp_offload: true
+  # enable_activation_offload: true
+  wandb_project: veomni_qwen2vl_sft_3d_exp
+  wandb_name: 20250529_qwen2_5vl_sft_fov_llavaov800k_3dod800k
+  rmpad: false
+  rmpad_with_pos_ids: true
+  ulysses_parallel_size: 1
+  freeze_vit: false
+  freeze_llm: false
+  freeze_merger: false
+  lr: 5.0e-5
+  vit_lr: 5.0e-6
+  lr_warmup_ratio: 0.1
+  lr_decay_style: cosine
+  num_train_epochs: 1
+  micro_batch_size: 4
+  global_batch_size: 128
+  save_steps: 500
+  save_hf_weights: false
+  empty_cache_steps: 100

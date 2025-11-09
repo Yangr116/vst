@@ -1,0 +1,55 @@
+{
+    "model": {
+        "VLM3DReasoner-Qwen2.5VL-3B": {
+            "model_path": "/opt/tiger/rayyang/spatial/cache/cache_vlmevalkit/hub/qwen2vl-2b-instruct",
+            "use_custom_prompt": true,
+            "post_process": true
+        }
+    },
+    "data": {
+        "MMStar": {
+            "class": "ImageMCQDataset",
+            "dataset": "MMStar"
+        },
+        "BLINK": {
+            "class": "ImageMCQDataset",
+            "dataset": "BLINK"
+        },
+        "3DSRBench": {
+            "class": "ImageMCQDataset",
+            "dataset": "3DSRBench"
+        },
+        "RealWorldQA": {
+            "class": "ImageMCQDataset",
+            "dataset": "RealWorldQA"
+        },
+        "MMBench_DEV_EN": {
+            "class": "ImageMCQDataset",
+            "dataset": "MMBench_DEV_EN"
+        },
+        "MMMU_DEV_VAL": {
+            "class": "MMMUDataset",
+            "dataset": "MMMU_DEV_VAL"
+        },
+        "OCRBench": {
+            "class": "OCRBench",
+            "dataset": "OCRBench"
+        },
+        "AI2D_TEST": {
+            "class": "ImageMCQDataset",
+            "dataset": "AI2D_TEST"
+        },
+        "CV-Bench-3D": {
+            "class": "CVBench",
+            "dataset": "CV-Bench-3D"
+        },
+        "CV-Bench-2D": {
+            "class": "CVBench",
+            "dataset": "CV-Bench-2D"
+        },
+        "MMSI_Bench": {
+            "class": "MMSIBenchDataset",
+            "dataset": "MMSI_Bench"
+        }
+    }
+}

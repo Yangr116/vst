@@ -1,0 +1,5 @@
+# Copyright 2025 [Visual Spatial Tuning] Authors
+
+IGNORE_INDEX = -100
+QWEN_IMAGE_INPUT_INDEX = 151655
+QWEN_VIDEO_INPUT_INDEX = 151656
