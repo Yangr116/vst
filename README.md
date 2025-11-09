@@ -3,8 +3,8 @@
 
 
 [![Paper](https://img.shields.io/badge/paper-5f16a8?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/)
-[![Blog](https://img.shields.io/badge/Blog-3858bf?style=for-the-badge&logo=homepage&logoColor=white)](https://yangr116.github.io/vst_project/)
-[![Weights](https://img.shields.io/badge/Model%20Weights-63cad3?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/models)
+[![Project Page](https://img.shields.io/badge/Blog-3858bf?style=for-the-badge&logo=homepage&logoColor=white)](https://yangr116.github.io/vst_project/)
+[![Weights](https://img.shields.io/badge/Model%20Weights-63cad3?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/collections/rayruiyang/vst)
 </div>
 
 We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed to cultivate Vision-Language Models (VLMs) with human-like visuospatial abilities—from spatial perception to advanced reasoning.
@@ -47,10 +47,10 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 
 | Model Name     | 🤗 HuggingFace Download |
 |:-------------- |:----------------------:|
-| VST-3B-SFT     | [Download]()           |
-| VST-3B-RL      | [Download]()           |
-| VST-7B-SFT     | [Download]()           |
-| VST-7B-RL      | [Download]()           |
+| VST-3B-SFT     | [Download](https://huggingface.co/rayruiyang/VST-3B-SFT)           |
+| VST-3B-RL      | [Download](https://huggingface.co/rayruiyang/VST-3B-RL)           |
+| VST-7B-SFT     | [Download](https://huggingface.co/rayruiyang/VST-7B-SFT)           |
+| VST-7B-RL      | [Download](https://huggingface.co/rayruiyang/VST-7B-RL)           |
 
 ---
 
