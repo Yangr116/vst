@@ -87,7 +87,10 @@ pip install -e .
 
 ### Train
 
-Please see [docs/train.md](./docs/train.md)
+SFT: [docs/train.md](./docs/train.md)
+
+Adapt to VLA model: [vla.md](./vla.md)
+
 
 ### Evaluation
 
