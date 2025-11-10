@@ -1,7 +1,7 @@
 {
     "model": {
         "VLM3DReasoner-Qwen2.5VL-3B": {
-            "model_path": "/opt/tiger/rayyang/spatial/cache/cache_vlmevalkit/hub/qwen2vl-2b-instruct",
+            "model_path": "./cache/cache_vlmevalkit/hub/qwen2vl-2b-instruct",
             "use_custom_prompt": true,
             "post_process": true
         }
