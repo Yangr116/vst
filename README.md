@@ -45,12 +45,12 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 
 ## 🏷️ Model Card
 
-| Model Name     | 🤗 HuggingFace Download |
+| Model Name     | 🤗 HuggingFace |
 |:-------------- |:----------------------:|
-| VST-3B-SFT     | [Download](https://huggingface.co/rayruiyang/VST-3B-SFT)           |
-| VST-3B-RL      | [Download](https://huggingface.co/rayruiyang/VST-3B-RL)           |
-| VST-7B-SFT     | [Download](https://huggingface.co/rayruiyang/VST-7B-SFT)           |
-| VST-7B-RL      | [Download](https://huggingface.co/rayruiyang/VST-7B-RL)           |
+| VST-3B-SFT     | [rayruiyang/VST-3B-SFT](https://huggingface.co/rayruiyang/VST-3B-SFT)           |
+| VST-3B-RL      | [rayruiyang/VST-3B-RL](https://huggingface.co/rayruiyang/VST-3B-RL)           |
+| VST-7B-SFT     | [rayruiyang/VST-7B-SFT](https://huggingface.co/rayruiyang/VST-7B-SFT)           |
+| VST-7B-RL      | [rayruiyang/VST-7B-RL](https://huggingface.co/rayruiyang/VST-7B-RL)           |
 
 ### 📈  Spatial & General Benchmarks
 
@@ -69,6 +69,19 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 | VST-3B-RL      | 57.7 | 66.6       | 45.0       | 72.8      | 60.9      | 59.9      | 47.6      | 40.7       | 68.3        |
 | VST-7B-SFT      | 60.6 | 72.0   | 44.4       | 74.3      | 68.3      | 59.7      | 55.8      | 44.9       | 65.2        |
 | VST-7B-RL      | 61.2 | 71.6   | 43.8       | 75.5  | 69.2  | 60.0      | 55.6      | 44.3       | 69.2        |
+
+
+### 📈  SUN RGBD 3D Object Detection
+
+| Methods                | AP@15   |
+|------------------------|---------|
+| Seed1.5-VL             | 33.5    |
+| Gemini-2.0-Pro         | 32.5    |
+| Gemini Robotics-ER     | **48.3**|
+| VST-3B-SFT       | 37.3    |
+| VST-3B-RL       | 40.1    |
+| VST-7B-SFT      | 41.6    |
+| VST-7B-RL       | **44.2**|
 
 
 ---
