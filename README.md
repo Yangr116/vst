@@ -15,7 +15,7 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 
 ## 💡 Key Highlights
 
-✨ **VST-P**: 4.1 million samples across 19 skills, spanning single images, multi-image scenarios, and videos—boosting spatial perception in VLMs.  
+✨ **VST-P**: 4.1M samples across 19 skills, spanning single images, multi-image scenarios, and videos—boosting spatial perception in VLMs.  
 ✨ **VST-R**: 135K curated samples that teach models to reason in space, including step-by-step reasoning and rule-based data for reinforcement learning.  
 ✨ **Progressive Training Pipeline**: Start with supervised fine-tuning to build foundational spatial knowledge, then reinforce spatial reasoning abilities via RL. VST achieves state-of-the-art results on spatial benchmarks (34.8% on MMSI-Bench, 61.2% on VSIBench) without compromising general capabilities.  
 ✨ **Vision-Language-Action Models Enhanced**: The VST paradigm significantly strengthens spatial tuning, paving the way for more physically grounded AI.
