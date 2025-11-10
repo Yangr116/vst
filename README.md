@@ -99,7 +99,7 @@ If you find VST useful for your research or applications, please ⭐ star the re
 ```bibtex
 @article{vst,
   title={Visual Spatial Tuning},
-  author={Rui Yang, Ziyu Zhu, Yanwei Li, Jingjia Huang, Shen Yan, Siyuan Zhou, Zhe Liu, Xiangtai Li, Shuangye Li, Wenqian Wang, Yi Lin, Guang Shi, Hengshuang Zhao},
+  author={Rui Yang, Ziyu Zhu, Yanwei Li, Jingjia Huang, Shen Yan, Siyuan Zhou, Zhe Liu, Xiangtai Li, Shuangye Li, Wenqian Wang, Yi Lin, Hengshuang Zhao},
   journal={arXiv preprint arXiv:xxx},
   year={2025}
 }
