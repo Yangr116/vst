@@ -52,7 +52,28 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 | VST-7B-SFT     | [Download](https://huggingface.co/rayruiyang/VST-7B-SFT)           |
 | VST-7B-RL      | [Download](https://huggingface.co/rayruiyang/VST-7B-RL)           |
 
+### 📈  Spatial & General Benchmarks
+
+| Models              | CV   | 3DSR | MMSI | BLINK | VSI  | MMStar | MMB  | RealworldQA | MMMU | OCRB | AI2D |
+|---------------------|------|------|------|-------|------|--------|------|-------------|------|------|------|
+| VST-3B-SFT   | 84.4 | 54.1 | 30.2 | 59.1  | 57.9 | 58.0   | 80.9 | 68.4        | 45.2 | 83.7 | 82.5 |
+| VST-3B-RL   | 84.2 | 56.5 | 31.3 | 57.2  | 57.7 | 58.9   | 80.5 | 68.5        | 49.8 | 80.9 | 82.4 |
+| VST-7B-SFT   | 85.5 | 54.6 | 32.0 | 62.1  | 60.6 | 63.1   | 83.3 | 72.2        | 50.6 | 85.5 | 84.9 |
+| VST-7B-RL| 86.5 | 60.1 | 34.8 | 62.6 | 61.2 | 63.5 | 83.0 | 68.5 | 49.4 | 86.1 | 83.5 |
+
+### 📈  VSIBench
+
+| Methods               | Avg. | Obj. Count | Abs. Dist. | Obj. Size | Room Size | Rel. Dist | Rel. Dir. | Route Plan | Appr. Order |
+|-----------------------|------|------------|------------|-----------|-----------|-----------|-----------|------------|-------------|
+| VST-3B-SFT      | 57.9 | 69.3       | 45.4       | 71.8      | 62.4      | 59.0      | 46.0      | 38.7       | 70.2    |
+| VST-3B-RL      | 57.7 | 66.6       | 45.0       | 72.8      | 60.9      | 59.9      | 47.6      | 40.7       | 68.3        |
+| VST-7B-SFT      | 60.6 | 72.0   | 44.4       | 74.3      | 68.3      | 59.7      | 55.8      | 44.9       | 65.2        |
+| VST-7B-RL      | 61.2 | 71.6   | 43.8       | 75.5  | 69.2  | 60.0      | 55.6      | 44.3       | 69.2        |
+
+
 ---
+
+
 
 ## ⚡ Getting Started
 
@@ -64,25 +85,13 @@ cd VST
 pip install -e .
 ```
 
-## 📈 Performance
+### Train
 
-### Spatial & General Benchmarks
+Please see [docs/train.md](./docs/train.md)
 
-| Models              | CV   | 3DSR | MMSI | BLINK | VSI  | MMStar | MMB  | RealworldQA | MMMU | OCRB | AI2D |
-|---------------------|------|------|------|-------|------|--------|------|-------------|------|------|------|
-| VST-3B-SFT   | 84.4 | 54.1 | 30.2 | 59.1  | 57.9 | 58.0   | 80.9 | 68.4        | 45.2 | 83.7 | 82.5 |
-| VST-3B-RL   | 84.2 | 56.5 | 31.3 | 57.2  | 57.7 | 58.9   | 80.5 | 68.5        | 49.8 | 80.9 | 82.4 |
-| VST-7B-SFT   | 85.5 | 54.6 | 32.0 | 62.1  | 60.6 | 63.1   | 83.3 | 72.2        | 50.6 | 85.5 | 84.9 |
-| VST-7B-RL| 86.5 | 60.1 | 34.8 | 62.6 | 61.2 | 63.5 | 83.0 | 68.5 | 49.4 | 86.1 | 83.5 |
+### Evaluation
 
-### VSIBench
-
-| Methods               | Avg. | Obj. Count | Abs. Dist. | Obj. Size | Room Size | Rel. Dist | Rel. Dir. | Route Plan | Appr. Order |
-|-----------------------|------|------------|------------|-----------|-----------|-----------|-----------|------------|-------------|
-| VST-3B-SFT      | 57.9 | 69.3       | 45.4       | 71.8      | 62.4      | 59.0      | 46.0      | 38.7       | 70.2    |
-| VST-3B-RL      | 57.7 | 66.6       | 45.0       | 72.8      | 60.9      | 59.9      | 47.6      | 40.7       | 68.3        |
-| VST-7B-SFT      | 60.6 | 72.0   | 44.4       | 74.3      | 68.3      | 59.7      | 55.8      | 44.9       | 65.2        |
-| VST-7B-RL      | 61.2 | 71.6   | 43.8       | 75.5  | 69.2  | 60.0      | 55.6      | 44.3       | 69.2        |
+Please see [docs/evaluation.md](./docs/evaluation.md)
 
 
 ## 📜 License

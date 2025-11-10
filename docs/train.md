@@ -22,4 +22,4 @@ bash scripts/train.sh vlm3d/train.py config/veomni/qwen2_5vl/qwen2_5_vl_32b_fspd
 
 ## Adapt to VLA Model
 
-Please refer to [this doc](../prepare_data/vla/libero/README.md)
+Please refer to [this doc](./vla.md)
