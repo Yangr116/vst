@@ -77,15 +77,78 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 
 ## ⚡ Getting Started
 
-### Installation
+### Using 🤗  Transformers to Chat
+
+```bash
+pip install transformers
+# It's highly recommanded to use `[decord]` feature for faster video loading.
+pip install qwen-vl-utils
+```
+
+```python
+import torch
+from transformers import Qwen2_5_VLForConditionalGeneration, AutoTokenizer, AutoProcessor
+from qwen_vl_utils import process_vision_info
+
+model_path="rayruiyang/VST-3B-SFT"
+
+# We recommend enabling flash_attention_2 for better acceleration and memory saving, especially in multi-image and video scenarios.
+model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+    model_path,
+    torch_dtype=torch.bfloat16,
+    attn_implementation="flash_attention_2",
+    device_map="auto",
+)
+
+# default processer
+processor = AutoProcessor.from_pretrained(model_path, min_pixels = 256*28*28, max_pixels=1280*28*28)
+
+messages = [
+    {
+        "role": "user",
+        "content": [
+            {
+                "type": "image",
+                "image": "http://images.cocodataset.org/train2017/000000039685.jpg",
+            },
+            {"type": "text", "text": "Consider the real-world 3D locations of the objects. Is the flag directly underneath the airplane?"},
+        ],
+    }
+]
+
+# Preparation for inference
+text = processor.apply_chat_template(
+    messages, tokenize=False, add_generation_prompt=True
+)
+image_inputs, video_inputs = process_vision_info(messages)
+inputs = processor(
+    text=[text],
+    images=image_inputs,
+    videos=video_inputs,
+    padding=True,
+    return_tensors="pt",
+)
+inputs = inputs.to("cuda")
+
+# Inference: Generation of the output
+generated_ids = model.generate(**inputs, max_new_tokens=128)
+generated_ids_trimmed = [
+    out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
+]
+output_text = processor.batch_decode(
+    generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False
+)
+print(output_text[0])
+```
+
+
+### Train
 
 ```bash
 git clone https://github.com/Yangr116/VST
 cd VST
 pip install -e .
 ```
-
-### Train
 
 SFT: [docs/train.md](./docs/train.md)
 
