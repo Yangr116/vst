@@ -112,7 +112,7 @@ If you find VST useful for your research or applications, please ⭐ star the re
 @article{vst,
   title={Visual Spatial Tuning},
   author={Rui Yang, Ziyu Zhu, Yanwei Li, Jingjia Huang, Shen Yan, Siyuan Zhou, Zhe Liu, Xiangtai Li, Shuangye Li, Wenqian Wang, Yi Lin, Hengshuang Zhao},
-  journal={arXiv preprint arXiv:xxx},
+  journal={arXiv preprint arXiv:2511.05491},
   year={2025}
 }
 ```
