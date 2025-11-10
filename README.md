@@ -18,7 +18,7 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 ✨ **VST-P**: 4.1M samples across 19 skills, spanning single images, multi-image scenarios, and videos—boosting spatial perception in VLMs.  
 ✨ **VST-R**: 135K curated samples that teach models to reason in space, including step-by-step reasoning and rule-based data for reinforcement learning.  
 ✨ **Progressive Training Pipeline**: Start with supervised fine-tuning to build foundational spatial knowledge, then reinforce spatial reasoning abilities via RL. VST achieves state-of-the-art results on spatial benchmarks (34.8% on MMSI-Bench, 61.2% on VSIBench) without compromising general capabilities.  
-✨ **Vision-Language-Action Models Enhanced**: The VST paradigm significantly strengthens spatial tuning, paving the way for more physically grounded AI.
+✨ **Vision-Language-Action Models Enhanced**: The VST paradigm significantly strengthens robotic learning, paving the way for more physically grounded AI.
 
 ---
 
@@ -90,7 +90,15 @@ import torch
 from transformers import Qwen2_5_VLForConditionalGeneration, AutoTokenizer, AutoProcessor
 from qwen_vl_utils import process_vision_info
 
-model_path="rayruiyang/VST-3B-SFT"
+THINK_SYSTEM_PROMPT = "You are a helpful assistant. You should first think about the reasoning process in the mind and then provide the user with the answer. The reasoning process is enclosed within <think> </think> tags, i.e. <think> reasoning process here </think> answer here."
+think_mesg = {
+                "role": "system",
+                "content": [{"type": "text", "text": THINK_SYSTEM_PROMPT}],
+            }
+
+enable_thinking=False
+
+model_path="rayruiyang/VST-7B-RL"
 
 # We recommend enabling flash_attention_2 for better acceleration and memory saving, especially in multi-image and video scenarios.
 model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
@@ -109,12 +117,16 @@ messages = [
         "content": [
             {
                 "type": "image",
-                "image": "http://images.cocodataset.org/train2017/000000039685.jpg",
+                "image": "http://images.cocodataset.org/train2017/000000075668.jpg",
             },
-            {"type": "text", "text": "Consider the real-world 3D locations of the objects. Is the flag directly underneath the airplane?"},
+            {"type": "text", "text": "Consider the real-world 3D locations of the objects. Is the 'no motorcycle' sign directly above the red bus?"},
         ],
     }
 ]
+
+if enable_thinking:
+    messages.insert(0, think_mesg)
+
 
 # Preparation for inference
 text = processor.apply_chat_template(
@@ -141,6 +153,10 @@ output_text = processor.batch_decode(
 print(output_text[0])
 ```
 
+### Cookbook
+
+* [scene understanding](cookbook/scene_understanding.ipynb)
+* still updating
 
 ### Train
 
