@@ -89,14 +89,20 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 
 
 ## ⚡ Getting Started
-
-### Using 🤗  Transformers to Chat
-
 ```bash
 pip install transformers
 # It's highly recommanded to use `[decord]` feature for faster video loading.
 pip install qwen-vl-utils
 ```
+
+### Cookbook
+
+* [scene understanding](cookbook/scene_understanding.ipynb)
+* [3d object detection](cookbook/object_detection_3d.ipynb)
+* still updating
+
+
+### Using 🤗  Transformers to Chat
 
 ```python
 import torch
@@ -165,12 +171,6 @@ output_text = processor.batch_decode(
 )
 print(output_text[0])
 ```
-
-### Cookbook
-
-* [scene understanding](cookbook/scene_understanding.ipynb)
-* [3d object detection](cookbook/object_detection_3d.ipynb)
-* still updating
 
 ### Train
 
