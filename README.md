@@ -169,6 +169,7 @@ print(output_text[0])
 ### Cookbook
 
 * [scene understanding](cookbook/scene_understanding.ipynb)
+* [3d object detection](cookbook/object_detection_3d.ipynb)
 * still updating
 
 ### Train
