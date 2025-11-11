@@ -9,7 +9,7 @@
 
 We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed to cultivate Vision-Language Models (VLMs) with human-like visuospatial abilities—from spatial perception to advanced reasoning.
 
-![Teaser Image](assets/teaser_project_page.jpg)
+<!-- ![Teaser Image](assets/teaser_project_page.jpg) -->
 
 ---
 
