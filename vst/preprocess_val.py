@@ -8,9 +8,9 @@ from typing import Union
 from PIL import Image
 
 from qwen_vl_utils import smart_resize
-from vlm3d.prompt import SYS_PROMPT
-from vlm3d.dataset_iterative import build_mapping_dataset
-from vlm3d.prerpocess_box3d import (
+from vst.prompt import SYS_PROMPT
+from vst.dataset_iterative import build_mapping_dataset
+from vst.prerpocess_box3d import (
     convert_prefix_prompt_to_fov,
     quat_prompt,
     uvd_prompt,

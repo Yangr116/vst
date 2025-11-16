@@ -1,0 +1,3 @@
+- ann_path: llava_next_vst
+  data_dir: work_dirs/data
+  token_num: 20531761

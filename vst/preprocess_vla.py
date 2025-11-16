@@ -7,9 +7,9 @@ from transformers import ProcessorMixin
 from veomni.data.constants import IMAGE_INPUT_INDEX, VIDEO_INPUT_INDEX
 from veomni.data.chat_template import ChatTemplate
 
-from vlm3d.preprocess import load_vision_inputs, convert_llava2qwen, qwen_messages_sft_preprocess
-from vlm3d.utils.vision_process import process_vision_info
-from vlm3d.vla.action_tokenizer import ActionTokenizer
+from vst.preprocess import load_vision_inputs, convert_llava2qwen, qwen_messages_sft_preprocess
+from vst.utils.vision_process import process_vision_info
+from vst.vla.action_tokenizer import ActionTokenizer
 
 
 class SampleTransformVLA:

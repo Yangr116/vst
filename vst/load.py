@@ -125,7 +125,7 @@ def load_model_weights(
     return list(parameter_names)
 
 
-def build_vlm3d_model(
+def build_vst_custom_model(
     config_path: str,
     weights_path: Optional[str] = None,
     encoders: Dict[str, Any] = {},

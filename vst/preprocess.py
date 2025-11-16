@@ -11,9 +11,9 @@ from loguru import logger
 from veomni.data.constants import IMAGE_INPUT_INDEX, VIDEO_INPUT_INDEX
 from veomni.data.chat_template import ChatTemplate
 
-from vlm3d.prompt import SYS_PROMPT, THINK_SYSTEM_PROMPT
-from vlm3d.prerpocess_box3d import convert_prefix_prompt_to_fov, convert_bbox3d_to_uvd, convert_bbox3d_to_quat, func_remove_intrinsics, convert_conv_predict_fov
-from vlm3d.utils.vision_process import process_vision_info, VIDEO_MIN_PIXELS
+from vst.prompt import SYS_PROMPT, THINK_SYSTEM_PROMPT
+from vst.prerpocess_box3d import convert_prefix_prompt_to_fov, convert_bbox3d_to_uvd, convert_bbox3d_to_quat, func_remove_intrinsics, convert_conv_predict_fov
+from vst.utils.vision_process import process_vision_info, VIDEO_MIN_PIXELS
 
 
 IMAGE_FLAG = "<|image_pad|>"

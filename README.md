@@ -13,6 +13,10 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 
 ---
 
+## 🔥 News
+* Training code has been updated and verified, please see [Train](###-Train), which is very efficient because of data packing.
+
+
 ## 💡 Key Highlights
 
 ✨ **VST-P**: 4.1M samples across 19 skills, spanning single images, multi-image scenarios, and videos—boosting spatial perception in VLMs.  
@@ -177,12 +181,17 @@ print(output_text[0])
 ```bash
 git clone https://github.com/Yangr116/VST
 cd VST
+# install veomni
+git clone https://github.com/ByteDance-Seed/VeOmni.git third_party/VeOmni
+cd third_party/VeOmni
 pip install -e .
+# install requirements
+pip install -r requirements.txt
 ```
 
-SFT: [docs/train.md](./docs/train.md)
+NOTE: we use torch2.5.1+cu124, other torch version is also fine.
 
-Adapt to VLA model: [vla.md](./vla.md)
+Please follow [docs/train.md](./docs/train.md) to prepare data and train models.
 
 
 ### Evaluation

@@ -58,13 +58,13 @@ if TYPE_CHECKING:
 
     from veomni.data.chat_template import ChatTemplate
 
-from vlm3d.utils.utils_model import print_model_params
-from vlm3d.utils.data_utils import sample_data
-from vlm3d.preprocess import SampleTransform
-from vlm3d.load import build_vlm3d_model
-from vlm3d.dataset_iterative import build_iterative_dataset
-from vlm3d.chat_template import Qwen2_5VLChatTemplate
-from vlm3d.constant import QWEN_IMAGE_INPUT_INDEX, QWEN_VIDEO_INPUT_INDEX
+from vst.utils.utils_model import print_model_params
+from vst.utils.data_utils import sample_data
+from vst.preprocess import SampleTransform
+from vst.load import build_vst_custom_model
+from vst.dataset_iterative import build_iterative_dataset
+from vst.chat_template import Qwen2_5VLChatTemplate
+from vst.constant import QWEN_IMAGE_INPUT_INDEX, QWEN_VIDEO_INPUT_INDEX
 
 from transformers import AddedToken, Qwen2VLProcessor, Qwen2_5_VLProcessor
 import math
@@ -198,7 +198,7 @@ class MyModelArguments(ModelArguments):
         default=MIN_PIXELS,
         metadata={"help": "expectied max pixels."},
     )
-    vlm3d: Optional[bool] = field(
+    vst_custom_model: Optional[bool] = field(
         default=False, 
         metadata={"help": "Does't continue training from qwenvl model"},
     )
@@ -280,8 +280,9 @@ def main():
     )
 
     logger.info_rank0("Prepare model")
-    if args.model.vlm3d:
-        model = build_vlm3d_model(
+    if args.model.vst_custom_model:
+        # train from scratch
+        model = build_vst_custom_model(
             config_path=args.model.config_path,
             weights_path=args.model.model_path,
             encoders=args.model.encoders,

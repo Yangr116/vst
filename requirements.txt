@@ -1,7 +1,7 @@
 datasets
 deepspeed==0.15.4
 qwen_vl_utils
-transformers==4.51.0
+transformers==4.51.3
 trl==0.14.0
 transformers-stream-generator==0.0.4
 fastapi==0.112

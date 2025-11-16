@@ -6,7 +6,7 @@ import numpy as np
 import copy
 from loguru import logger
 from scipy.spatial.transform import Rotation
-from vlm3d.utils.box3d_utils import decode_bbox3d_dict_from_json, encode_json, convert_degree_range
+from vst.utils.box3d_utils import decode_bbox3d_dict_from_json, encode_json, convert_degree_range
 
 
 def get_camera_params(input_string: str):

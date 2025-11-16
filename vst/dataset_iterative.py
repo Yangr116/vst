@@ -16,7 +16,7 @@ import torch.distributed as dist
 from veomni.distributed.parallel_state import get_parallel_state
 from veomni.utils.dist_utils import main_process_first
 
-from vlm3d.prompt import DUMMY_CONV
+from vst.prompt import DUMMY_CONV
 
 
 class DummyDataset(Dataset):

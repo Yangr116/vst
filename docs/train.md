@@ -1,25 +1,132 @@
-### Train
-#### Stage 1: SFT
+
+# Content
+- [Prepare data](#-Prepare-data)
+- [Train](#-Train)
+- [Adapt to VLA Model](#-Adapt-to-VLA-Model)
+
+# Prepare data
+
+We prepare the data into the parquet format and calculate the total token nums (used for data packing and iterable dataloder).
+
+Here, we take "lmms-lab/LLaVA-NeXT-Data" as an example.
+
+Step1: Download data:
 ```shell
-bash scripts/train.sh vlm3d/train.py config/veomni/qwen2_5vl/qwen2_5_vl_32b_fspd1_fov_packing_llavaov800k.yaml \ 
+# modify cache_dir and local_dir in this script and run it, the data will be saved into local_dir
+# export HF_ENDPOINT='https://hf-mirror.com'  # if you don't have a VPN at mainland.
+python tools/download_hf_data.py
+```
+
+Step2: Convert the data into required parquet format
+```shell
+python prepare_data/sft/convert_llavanext_parquet.py --data_dir "your_data/LLaVA-NeXT-Data/data" -o "your_save_path" --tag "llava_next_vst"
+```
+
+Then, to create a yaml file to record the data path:
+```yaml
+- ann_path: llava_next_vst
+  data_dir: work_dirs/data # revise to your data directory
+```
+
+Step3: calculate the token num
+```shell
+python tools/compute_num_token.py config/data/llavanext.yaml -p your_model_dir/Qwen2.5-VL-3B-Instruct -w 8
+```
+
+You can prepare your custom JSON file following this script:
+
+
+Now, you can use the prepared data to train your model!
+
+# Train
+```shell
+export WANDB_API_KEY="Your_wandb_key"
+```
+## Stage 1: SFT
+```shell
+bash scripts/train.sh vst/train.py config/veomni/qwen2_5vl/qwen2_5_vl_32b_fspd1_fov_packing_llavaov800k.yaml \ 
     --model.model_path 'Qwen2.5-VL-3B-Instruct' \ 
-    --data.train_path 'config/dataconfig/parquet/toy_sft.yaml' \ 
-    --data.train_size 13700_000_000 \ 
-    --train.output_dir 'work_dir/vst_3b_toy_sft' \ 
-    --train.wandb_name 'vst_3b_toy_sft'
+    --data.train_path 'config/data/llavanext.yaml' \ 
+    --data.train_size 20_531_761 \ 
+    --train.output_dir 'work_dir/qwen2_5vl_sft_llavanext_example' \ 
+    --train.wandb_name 'qwen2_5vl_sft_llavanext_example'
 ```
+## Stage 2: CoT Cold Start
 
-CoT Cold Start:
+As the stage-1, the only thing is to use the data with CoT trace.
+
+## Stage 3: RL
+
+
+# Adapt to VLA Model
+
+## Prepare LIBERO data
+
+### Step1: Download the LIBERO dataset
+You should download the LIBERO dataset following [instructions](https://github.com/Lifelong-Robot-Learning/LIBERO?tab=readme-ov-file#Dataset).
+
+### Step2: Preprocess
+We follow [OpenVLA](https://github.com/openvla/openvla/blob/main/experiments/robot/libero/regenerate_libero_dataset.py) to filter data:
+```
+python prepare_data/vla/libero/regenerate_libero_dataset.py \
+    --libero_task_suite libero_spatial \
+    --libero_raw_data_dir ./LIBERO/libero/datasets/libero_spatial \
+    --libero_target_dir ./LIBERO/libero/datasets/libero_spatial_no_noops
+# you should replace the path
+```
+Then, we got processed dataset:
 ```shell
-bash scripts/train.sh vlm3d/train.py config/veomni/qwen2_5vl/qwen2_5_vl_32b_fspd1_fov_packing_llavaov800k.yaml \ 
-    --model.model_path 'trained' \ 
-    --data.train_path 'config/dataconfig/parquet/toy_sft.yaml' \ 
-    --data.train_size 13700_000_000 \ 
-    --train.output_dir 'work_dir/vst_3b_toy_sft' \ 
-    --train.wandb_name 'vst_3b_toy_sft'
+├── libero_10_no_noops
+├── libero_goal_no_noops
+├── libero_object_no_noops
+└── libero_spatial_no_noops
 ```
 
+### Step3: Convert to parquet
+```shell
+python prepare_data/vla/libero/preprocess_libero.py \ 
+    --save_dir "./dataset/parquet/vla/libero" \ 
+    --libero_dir "./LIBERO/libero/datasets"
+```
 
-## Adapt to VLA Model
+## Train VLA model
 
-Please refer to [this doc](./vla.md)
+To train the action model on the spatial subset:
+```shell
+bash scripts/train.sh vst/train_vla.py config/veomni/qwen2_5vla/vla_qwen2_5_vl_fspd1.yaml \ 
+    --model.model_path 'VST-3B-SFT' \ 
+    --data.train_path 'config/dataconfig/vla/libero_spatial.yaml' \ 
+    --data.train_size 5_500_000 \ 
+    --train.output_dir 'work_dirs/20250824_vla_qwen2_5vl_3b_spatial_sft_libero_spatial' \ 
+    --train.wandb_name '20250824_vla_qwen2_5vl_3b_spatial_sft_libero_spatial' \ 
+    --data.num_workers 2 \ 
+    --data.buffer_size 6000 \ 
+    --train.lr_warmup_ratio 0.03 \ 
+    --train.num_train_epochs 50 \ 
+    --train.lr 0.00008 \ 
+    --train.vit_lr 0.000008 \ 
+    --data.max_seq_len 2048 \ 
+    --train.micro_batch_size 16
+```
+
+## Evaluation on LIBERO
+
+Prepare the LIBERO evaluation env:
+```shell
+git clone https://github.com/Lifelong-Robot-Learning/LIBERO.git
+cd LIBERO
+pip install -e .
+cd ..
+pip install -r benchmark/libero/libero_requirements.txt
+echo N | python -c "from libero.libero import benchmark"
+sudo apt-get install libegl-dev -y
+```
+
+Then:
+
+```shell
+bash benchmark/libero/auto_run_vst_vla_libero_norm.sh \ 
+    $your_model_path \ 
+    "libero_spatial" \ # This can be "libero_spatial" "libero_object" "libero_goal" "libero_10"
+    $your_work_dir
+```
