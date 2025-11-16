@@ -14,7 +14,7 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 ---
 
 ## 🔥 News
-* Training code has been updated and verified, please see [Train](###-Train), which is very efficient because of data packing.
+* Training code has been updated and verified, please see [Train](###train), which is very efficient because of data packing.
 
 
 ## 💡 Key Highlights
