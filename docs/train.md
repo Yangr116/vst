@@ -8,6 +8,19 @@
 
 We prepare the data into the parquet format and calculate the total token nums (used for data packing and iterable dataloder).
 
+Each item must follow this format strictly:
+```python
+{
+    'conversations': build_convs(item['conversations']), # list
+    'id': item_id, # string
+    'data_source': item.get('data_source', data_source), # string
+    'images': images,  # list 
+    'type': data_type, # string
+    'meta_info': json.dumps(meta_info_list),  # string
+}
+```
+
+
 Here, we take "lmms-lab/LLaVA-NeXT-Data" as an example.
 
 Step1: Download data:
