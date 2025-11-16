@@ -65,6 +65,8 @@ each json item should follow the llava format:
 }
 ```
 
+After that, you need to calculate the token num follow the above step-3.
+
 Now, you can use the prepared data to train your model!
 
 # Train
