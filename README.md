@@ -56,36 +56,75 @@ We introduce **Visual Spatial Tuning (VST)**, a comprehensive framework designed
 | VST-7B-SFT     | [rayruiyang/VST-7B-SFT](https://huggingface.co/rayruiyang/VST-7B-SFT)           |
 | VST-7B-RL      | [rayruiyang/VST-7B-RL](https://huggingface.co/rayruiyang/VST-7B-RL)           |
 
-### 📈  Spatial & General Benchmarks
+<details>
+  <summary>Click to see performance 📈 </summary>
+  
+  <h3>📈 Spatial & General Benchmarks</h3>
+  <table>
+    <tr>
+      <th>Models</th><th>CV</th><th>3DSR</th><th>MMSI</th><th>BLINK</th><th>VSI</th><th>MMStar</th><th>MMB</th><th>RealworldQA</th><th>MMMU</th><th>OCRB</th><th>AI2D</th>
+    </tr>
+    <tr>
+      <td>VST-3B-SFT</td><td>84.4</td><td>54.1</td><td>30.2</td><td>59.1</td><td>57.9</td><td>58.0</td><td>80.9</td><td>68.4</td><td>45.2</td><td>83.7</td><td>82.5</td>
+    </tr>
+    <tr>
+      <td>VST-3B-RL</td><td>84.2</td><td>56.5</td><td>31.3</td><td>57.2</td><td>57.7</td><td>58.9</td><td>80.5</td><td>68.5</td><td>49.8</td><td>80.9</td><td>82.4</td>
+    </tr>
+    <tr>
+      <td>VST-7B-SFT</td><td>85.5</td><td>54.6</td><td>32.0</td><td>62.1</td><td>60.6</td><td>63.1</td><td>83.3</td><td>72.2</td><td>50.6</td><td>85.5</td><td>84.9</td>
+    </tr>
+    <tr>
+      <td>VST-7B-RL</td><td>86.5</td><td>60.1</td><td>34.8</td><td>62.6</td><td>61.2</td><td>63.5</td><td>83.0</td><td>68.5</td><td>49.4</td><td>86.1</td><td>83.5</td>
+    </tr>
+  </table>
 
-| Models              | CV   | 3DSR | MMSI | BLINK | VSI  | MMStar | MMB  | RealworldQA | MMMU | OCRB | AI2D |
-|---------------------|------|------|------|-------|------|--------|------|-------------|------|------|------|
-| VST-3B-SFT   | 84.4 | 54.1 | 30.2 | 59.1  | 57.9 | 58.0   | 80.9 | 68.4        | 45.2 | 83.7 | 82.5 |
-| VST-3B-RL   | 84.2 | 56.5 | 31.3 | 57.2  | 57.7 | 58.9   | 80.5 | 68.5        | 49.8 | 80.9 | 82.4 |
-| VST-7B-SFT   | 85.5 | 54.6 | 32.0 | 62.1  | 60.6 | 63.1   | 83.3 | 72.2        | 50.6 | 85.5 | 84.9 |
-| VST-7B-RL| 86.5 | 60.1 | 34.8 | 62.6 | 61.2 | 63.5 | 83.0 | 68.5 | 49.4 | 86.1 | 83.5 |
+  <h3>📈 VSIBench</h3>
+  <table>
+    <tr>
+      <th>Methods</th><th>Avg.</th><th>Obj. Count</th><th>Abs. Dist.</th><th>Obj. Size</th><th>Room Size</th><th>Rel. Dist</th><th>Rel. Dir.</th><th>Route Plan</th><th>Appr. Order</th>
+    </tr>
+    <tr>
+      <td>VST-3B-SFT</td><td>57.9</td><td>69.3</td><td>45.4</td><td>71.8</td><td>62.4</td><td>59.0</td><td>46.0</td><td>38.7</td><td>70.2</td>
+    </tr>
+    <tr>
+      <td>VST-3B-RL</td><td>57.7</td><td>66.6</td><td>45.0</td><td>72.8</td><td>60.9</td><td>59.9</td><td>47.6</td><td>40.7</td><td>68.3</td>
+    </tr>
+    <tr>
+      <td>VST-7B-SFT</td><td>60.6</td><td>72.0</td><td>44.4</td><td>74.3</td><td>68.3</td><td>59.7</td><td>55.8</td><td>44.9</td><td>65.2</td>
+    </tr>
+    <tr>
+      <td>VST-7B-RL</td><td>61.2</td><td>71.6</td><td>43.8</td><td>75.5</td><td>69.2</td><td>60.0</td><td>55.6</td><td>44.3</td><td>69.2</td>
+    </tr>
+  </table>
 
-### 📈  VSIBench
-
-| Methods               | Avg. | Obj. Count | Abs. Dist. | Obj. Size | Room Size | Rel. Dist | Rel. Dir. | Route Plan | Appr. Order |
-|-----------------------|------|------------|------------|-----------|-----------|-----------|-----------|------------|-------------|
-| VST-3B-SFT      | 57.9 | 69.3       | 45.4       | 71.8      | 62.4      | 59.0      | 46.0      | 38.7       | 70.2    |
-| VST-3B-RL      | 57.7 | 66.6       | 45.0       | 72.8      | 60.9      | 59.9      | 47.6      | 40.7       | 68.3        |
-| VST-7B-SFT      | 60.6 | 72.0   | 44.4       | 74.3      | 68.3      | 59.7      | 55.8      | 44.9       | 65.2        |
-| VST-7B-RL      | 61.2 | 71.6   | 43.8       | 75.5  | 69.2  | 60.0      | 55.6      | 44.3       | 69.2        |
-
-
-### 📈  SUN RGBD 3D Object Detection
-
-| Methods                | AP@15   |
-|------------------------|---------|
-| Seed1.5-VL             | 33.5    |
-| Gemini-2.0-Pro         | 32.5    |
-| Gemini Robotics-ER     | **48.3**|
-| VST-3B-SFT       | 37.3    |
-| VST-3B-RL       | 40.1    |
-| VST-7B-SFT      | 41.6    |
-| VST-7B-RL       | **44.2**|
+  <h3>📈 SUN RGBD 3D Object Detection</h3>
+  <table>
+    <tr>
+      <th>Methods</th><th>AP@15</th>
+    </tr>
+    <tr>
+      <td>Seed1.5-VL</td><td>33.5</td>
+    </tr>
+    <tr>
+      <td>Gemini-2.0-Pro</td><td>32.5</td>
+    </tr>
+    <tr>
+      <td>Gemini Robotics-ER</td><td><b>48.3</b></td>
+    </tr>
+    <tr>
+      <td>VST-3B-SFT</td><td>37.3</td>
+    </tr>
+    <tr>
+      <td>VST-3B-RL</td><td>40.1</td>
+    </tr>
+    <tr>
+      <td>VST-7B-SFT</td><td>41.6</td>
+    </tr>
+    <tr>
+      <td>VST-7B-RL</td><td><b>44.2</b></td>
+    </tr>
+  </table>
+</details>
 
 
 ---
