@@ -21,7 +21,9 @@ Each item must follow this format strictly:
 ```
 
 
-Here, we take "lmms-lab/LLaVA-NeXT-Data" as an example.
+Here, we give two examples.
+
+### Taking "lmms-lab/LLaVA-NeXT-Data" as an example.
 
 Step1: Download data:
 ```shell
@@ -46,8 +48,22 @@ Step3: calculate the token num
 python tools/compute_num_token.py config/data/llavanext.yaml -p your_model_dir/Qwen2.5-VL-3B-Instruct -w 8
 ```
 
-You can prepare your custom JSON file following this script:
+### Taking JSON-based data as an example.
 
+You can convert the JSON-based data into required parquet files following this script:
+```shell
+python prepare_data/sft/convert_json_parquet.py -j llavaov_jsonfile -i yourdata/images -o "work_dirs/data" --tag "json_data" -w 8
+```
+NOTE:
+each json item should follow the llava format:
+```python
+{
+    'conversations': xxx, # list
+    'id': xxx,
+    'data_source': item.get('data_source', data_source), # string
+    'images': images,  # list , "image" key is ok
+}
+```
 
 Now, you can use the prepared data to train your model!
 
