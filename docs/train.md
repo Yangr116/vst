@@ -39,8 +39,11 @@ You can prepare your custom JSON file following this script:
 Now, you can use the prepared data to train your model!
 
 # Train
+
+The meaning of the config can be found in [veomni](https://github.com/ByteDance-Seed/VeOmni/blob/main/docs/config/config.md).
+
 ```shell
-export WANDB_API_KEY="Your_wandb_key"
+export WANDB_API_KEY="your_wandb_key"
 ```
 ## Stage 1: SFT
 ```shell
@@ -56,7 +59,7 @@ bash scripts/train.sh vst/train.py config/veomni/qwen2_5vl/qwen2_5_vl_32b_fspd1_
 As the stage-1, the only thing is to use the data with CoT trace.
 
 ## Stage 3: RL
-
+TODO
 
 # Adapt to VLA Model
 
