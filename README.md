@@ -227,6 +227,8 @@ pip install -e .
 # install requirements
 cd ../..
 pip install -r requirements.txt
+# install flash-attn (recommend)
+pip install flash-attn --no-build-isolation
 ```
 
 NOTE: we use torch2.5.1+cu124, other torch version is also fine.
