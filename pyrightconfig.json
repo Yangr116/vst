@@ -3,9 +3,8 @@
     "**/__pycache__",
     "data",
     "cache",
-    "_thrid_party",
-    "thrid_party",
     "wandb",
+    "work_dir",
     "work_dirs",
     "example",
     "data_engine/_third_party",
@@ -13,8 +12,7 @@
     "__pycache__"
   ],
   "include": [
-      "src",
-      "vlm3d",
-      "data_engine",
+      "vst",
+      "third_party",
   ]
 }

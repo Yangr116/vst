@@ -221,10 +221,11 @@ print(output_text[0])
 git clone https://github.com/Yangr116/VST
 cd VST
 # install veomni
-git clone https://github.com/ByteDance-Seed/VeOmni.git third_party/VeOmni
+git clone -b v0.1.3 https://github.com/ByteDance-Seed/VeOmni.git third_party/VeOmni
 cd third_party/VeOmni
 pip install -e .
 # install requirements
+cd ../..
 pip install -r requirements.txt
 ```
 

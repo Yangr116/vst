@@ -311,7 +311,8 @@ def main():
     
     processor = build_processor(args.model.tokenizer_path)
     if not isinstance(processor, Qwen2VLProcessor) and not isinstance(processor, Qwen2_5_VLProcessor):
-        processor = build_processor(args.model.encoders["image"]["model_path"])
+        processor = build_processor(args.model.model_path)
+    
     processor.image_processor.max_pixels = args.model.max_pixels
     processor.image_processor.min_pixels = args.model.min_pixels
     tokenizer = processor.tokenizer
@@ -328,7 +329,7 @@ def main():
     chat_template = Qwen2_5VLChatTemplate(processor.tokenizer)
     assert not (args.train.enable_fov and args.train.enable_predict_fov), "enable_fov and enable_predict_fov cannot be both True"
     transform = SampleTransform(
-        processor=processor, 
+        processor=processor,
         chat_template=chat_template, 
         position_id_func=position_id_func, 
         enable_fov=args.train.enable_fov,
