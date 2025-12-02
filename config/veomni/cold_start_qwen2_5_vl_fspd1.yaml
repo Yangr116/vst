@@ -46,3 +46,4 @@ train:
   save_steps: 100
   save_hf_weights: false
   empty_cache_steps: 100
+  ckpt_manager: dcp
