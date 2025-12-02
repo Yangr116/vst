@@ -6,7 +6,6 @@ from typing import Callable, Dict, List, Literal, Optional, Union
 import torch
 from datasets import load_dataset
 from datasets.distributed import split_dataset_by_node
-from hdfs_io import hisdir, hlist_files
 from huggingface_hub import hf_hub_download
 from torch.utils.data import Dataset, IterableDataset
 from loguru import logger
@@ -105,14 +104,7 @@ def build_mapping_dataset(
     data_paths = data_path.split(",")
     for data_path in data_paths:
         if data_path.startswith("hdfs://"):
-            if not hisdir(data_path):
-                raise FileNotFoundError(f"Dataset {data_path} not exists.")
-
-            for filename in hlist_files(folders=[data_path]):
-                from veomni.utils.helper import get_cache_dir
-
-                data_files.append(hf_hub_download(data_path, os.path.split(filename)[-1], cache_dir=get_cache_dir()))
-
+            raise ValueError
         elif os.path.isdir(data_path):
             data_files.extend([os.path.join(data_path, fn) for fn in os.listdir(data_path)])
         elif os.path.isfile(data_path):
