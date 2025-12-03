@@ -615,9 +615,11 @@ def main():
                 micro_batch = {
                     k: v.cuda(non_blocking=True) if isinstance(v, torch.Tensor) else v for k, v in micro_batch.items()
                 }
+                import pdb; pdb.set_trace()
 
                 with model_fwd_context:
                     loss: "torch.Tensor" = model(**micro_batch, use_cache=False).loss / len(micro_batches)
+                # micro_batch['position_ids'].shape = torch.Size([1, 3, N])
 
                 with model_bwd_context:
                     loss.backward()
